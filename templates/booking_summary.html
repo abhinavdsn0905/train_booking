@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Booking Confirmed 🎉</h2>
+
+<div style="background:#1e293b;padding:30px;border-radius:10px;width:400px;margin:auto;">
+
+<p><strong>PNR:</strong> {{ booking.pnr }}</p>
+<p><strong>Train:</strong> {{ booking.train.train_name }}</p>
+<p><strong>Date:</strong> {{ booking.travel_date }}</p>
+<p><strong>Passengers:</strong> {{ booking.passengers }}</p>
+<p><strong>Total Price:</strong> ₹{{ booking.total_price }}</p>
+
+<a href="{% url 'cancel_booking' booking.id %}" style="color:red;">Cancel Booking</a>
+
+</div>
+
+{% endblock %}
