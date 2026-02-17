@@ -15,7 +15,10 @@
             <th>Train Name</th>
             <th>From</th>
             <th>To</th>
-            <th>Seats</th>
+            <th>Date</th>
+            <th>Passengers</th>
+            <th>Total</th>
+            <th>Action</th>
         </tr>
     </thead>
 
@@ -25,11 +28,18 @@
             <td>{{ booking.train.train_name }}</td>
             <td>{{ booking.train.source }}</td>
             <td>{{ booking.train.destination }}</td>
-            <td>{{ booking.seats_booked }}</td>
+            <td>{{ booking.travel_date }}</td>
+            <td>{{ booking.passengers }}</td>
+            <td>₹{{ booking.total_price }}</td>
+            <td>
+                <a href="{% url 'cancel_booking' booking.id %}" class="cancel-btn">
+                    Cancel
+                </a>
+            </td>
         </tr>
         {% empty %}
         <tr>
-            <td colspan="4">No bookings yet.</td>
+            <td colspan="7">No bookings yet.</td>
         </tr>
         {% endfor %}
     </tbody>

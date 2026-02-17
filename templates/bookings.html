@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/booking_form.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="booking-container">
+
+    <div class="booking-card">
+
+        <h2>Book {{ train.train_name }}</h2>
+
+        {% if error %}
+            <p class="error-text">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <!-- Travel Date -->
+            <label>Travel Date</label>
+            <input type="date" name="travel_date" required>
+
+            <!-- Passenger Count -->
+            <label>Number of Passengers</label>
+            <input type="number"
+                   id="passenger-count"
+                   name="passengers"
+                   min="1"
+                   max="{{ train.available_seats }}"
+                   required>
+
+            <!-- Price Preview -->
+            <p id="price-preview" style="margin-bottom:15px; font-weight:bold; color:#38bdf8;"></p>
+
+            <!-- Dynamic Passenger Fields -->
+            <div id="passenger-fields"></div>
+
+            <!-- Submit -->
+            <button type="submit" class="confirm-btn">
+                Confirm Booking
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script>
+let price = {{ train.price }};
+
+document.getElementById("passenger-count").addEventListener("input", function () {
+
+    let count = this.value;
+    let container = document.getElementById("passenger-fields");
+    container.innerHTML = "";
+
+    // Update price preview
+    document.getElementById("price-preview").innerHTML =
+        "Total Price: ₹" + (count * price);
+
+    for (let i = 1; i <= count; i++) {
+        container.innerHTML += `
+            <div class="passenger-box">
+                <h4>Passenger ${i}</h4>
+
+                <input type="text"
+                       name="name_${i}"
+                       placeholder="Full Name"
+                       required>
+
+                <input type="number"
+                       name="age_${i}"
+                       placeholder="Age"
+                       required>
+
+                <select name="gender_${i}" required>
+                    <option value="">Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+            </div>
+        `;
+    }
+});
+</script>
+
+{% endblock %}

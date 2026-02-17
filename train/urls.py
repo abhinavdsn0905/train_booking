@@ -31,6 +31,9 @@ urlpatterns = [
 
     # train pages
     path('trains/', train_views.train_list, name='train_list'),
+    path("summary/<int:booking_id>/", booking_views.booking_summary, name="booking_summary"),
+    path("cancel/<int:booking_id>/", booking_views.cancel_booking, name="cancel_booking"),
+
 
     # booking
     path('book/<int:train_id>/', booking_views.book_train, name='book_train'),

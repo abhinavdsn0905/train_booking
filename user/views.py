@@ -48,7 +48,6 @@ def login(request):
                 request.session["username"] = user.username
                 request.session.pop("temp_user", None)
 
-                # clear otp after success
                 user.otp = None
                 user.save()
 
@@ -59,7 +58,6 @@ def login(request):
                     "error": "Invalid OTP"
                 })
 
-        # Username & password step
         username = request.POST.get("username")
         password = request.POST.get("password")
 
