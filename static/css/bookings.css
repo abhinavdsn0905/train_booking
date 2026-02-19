@@ -1,41 +1,67 @@
-/* My Bookings Page */
-
-.bookings-title {
+.page-title {
+    text-align: center;
     margin-bottom: 30px;
+    font-size: 28px;
 }
 
-.bookings-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #1e293b;
-    border-radius: 10px;
+/* Table Card */
+.table-card {
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
     overflow: hidden;
 }
 
-.bookings-table th {
-    background: #0f172a;
-    padding: 12px;
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.bookings-table td {
-    padding: 12px;
-    border-top: 1px solid #334155;
+thead {
+    background: linear-gradient(90deg, #2563eb, #1e40af);
+    color: white;
 }
 
-.bookings-table tr:hover {
-    background: #334155;
+th, td {
+    padding: 14px;
+    text-align: center;
 }
 
-.cancel-btn {
-    background: #ef4444;
+tbody tr {
+    border-bottom: 1px solid #e2e8f0;
+}
+
+tbody tr:hover {
+    background: #f1f5f9;
+}
+
+/* BUTTONS */
+
+.btn-view {
+    display: inline-block;
+    background: #0ea5e9;
+    color: white !important;
     padding: 6px 14px;
     border-radius: 6px;
-    color: white;
     text-decoration: none;
     font-size: 14px;
-    transition: 0.3s;
+    margin-right: 8px;
 }
 
-.cancel-btn:hover {
+.btn-view:hover {
+    background: #0284c7;
+}
+
+.btn-cancel {
+    display: inline-block;
+    background: #ef4444;
+    color: white !important;
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn-cancel:hover {
     background: #dc2626;
 }

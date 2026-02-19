@@ -10,6 +10,7 @@
 <h2 class="bookings-title">My Bookings</h2>
 
 <table class="bookings-table">
+
     <thead>
         <tr>
             <th>Train Name</th>
@@ -31,7 +32,12 @@
             <td>{{ booking.travel_date }}</td>
             <td>{{ booking.passengers }}</td>
             <td>₹{{ booking.total_price }}</td>
-            <td>
+
+            <td class="action-buttons">
+                <a href="{% url 'booking_summary' booking.id %}" class="view-btn">
+                    View Ticket
+                </a>
+
                 <a href="{% url 'cancel_booking' booking.id %}" class="cancel-btn">
                     Cancel
                 </a>
@@ -43,6 +49,7 @@
         </tr>
         {% endfor %}
     </tbody>
+
 </table>
 
 {% endblock %}

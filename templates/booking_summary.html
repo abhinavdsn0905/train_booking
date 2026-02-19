@@ -1,18 +1,51 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/ticket.css' %}">
+{% endblock %}
 
 {% block content %}
 
-<h2>Booking Confirmed 🎉</h2>
+<div class="ticket-wrapper">
 
-<div style="background:#1e293b;padding:30px;border-radius:10px;width:400px;margin:auto;">
+    <div class="ticket">
 
-<p><strong>PNR:</strong> {{ booking.pnr }}</p>
-<p><strong>Train:</strong> {{ booking.train.train_name }}</p>
-<p><strong>Date:</strong> {{ booking.travel_date }}</p>
-<p><strong>Passengers:</strong> {{ booking.passengers }}</p>
-<p><strong>Total Price:</strong> ₹{{ booking.total_price }}</p>
+        <div class="ticket-header">
+            <h2>RailConnect Ticket 🎟</h2>
+            <span class="pnr">PNR: {{ booking.pnr }}</span>
+        </div>
 
-<a href="{% url 'cancel_booking' booking.id %}" style="color:red;">Cancel Booking</a>
+        <div class="route-section">
+            <div class="route">
+                <h3>{{ booking.train.source }}</h3>
+                <p>Departure</p>
+            </div>
+
+            <div class="route-line">
+                ➝➝➝
+            </div>
+
+            <div class="route">
+                <h3>{{ booking.train.destination }}</h3>
+                <p>Arrival</p>
+            </div>
+        </div>
+
+        <div class="details">
+            <p><strong>Train:</strong> {{ booking.train.train_name }}</p>
+            <p><strong>Date:</strong> {{ booking.travel_date }}</p>
+            <p><strong>Passengers:</strong> {{ booking.passengers }}</p>
+            <p><strong>Total Fare:</strong> ₹{{ booking.total_price }}</p>
+        </div>
+
+        <div class="ticket-footer">
+            <a href="{% url 'cancel_booking' booking.id %}" class="cancel-btn">
+                Cancel Booking
+            </a>
+        </div>
+
+    </div>
 
 </div>
 

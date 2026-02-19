@@ -2,27 +2,34 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/register.css' %}">
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
 {% endblock %}
 
 {% block content %}
 
-<div class="form-card">
-    <h2>Register</h2>
+<div class="auth-container">
 
-    {% if error %}
-    <p class="error">{{ error }}</p>
-    {% endif %}
+    <div class="auth-card">
+        <h2>Create Account</h2>
 
-    <form method="POST">
-        {% csrf_token %}
+        <form method="POST">
+            {% csrf_token %}
 
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Password" required>
+            <input type="text" name="username" placeholder="Username" required>
 
-        <button type="submit">Register</button>
-    </form>
+            <input type="email" name="email" placeholder="Email" required>
+
+            <input type="password" name="password" placeholder="Password" required>
+
+            <button type="submit" class="main-btn">Register</button>
+        </form>
+
+        <p class="auth-footer">
+            Already have an account?
+            <a href="{% url 'login' %}">Login</a>
+        </p>
+    </div>
+
 </div>
 
 {% endblock %}

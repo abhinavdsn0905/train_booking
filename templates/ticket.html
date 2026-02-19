@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="ticket-container">
+
+    <div class="ticket-card">
+
+        <div class="ticket-header">
+            <h2>RailConnect E-Ticket</h2>
+            <span class="pnr">PNR: {{ booking.pnr }}</span>
+        </div>
+
+        <div class="ticket-body">
+
+            <div class="ticket-row">
+                <div>
+                    <strong>Train</strong>
+                    <p>{{ booking.train.train_name }}</p>
+                </div>
+
+                <div>
+                    <strong>Date</strong>
+                    <p>{{ booking.travel_date }}</p>
+                </div>
+            </div>
+
+            <div class="ticket-row">
+                <div>
+                    <strong>From</strong>
+                    <p>{{ booking.train.source }}</p>
+                </div>
+
+                <div>
+                    <strong>To</strong>
+                    <p>{{ booking.train.destination }}</p>
+                </div>
+            </div>
+
+            <div class="ticket-row">
+                <div>
+                    <strong>Passengers</strong>
+                    <p>{{ booking.passengers }}</p>
+                </div>
+
+                <div>
+                    <strong>Total Fare</strong>
+                    <p>₹{{ booking.total_price }}</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="ticket-footer">
+            Have a safe journey 🚆
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+.ticket-container {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+.ticket-card {
+    background: white;
+    width: 600px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.ticket-header {
+    background: linear-gradient(90deg, #2563eb, #1e40af);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ticket-body {
+    padding: 30px;
+}
+
+.ticket-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.ticket-footer {
+    background: #f1f5f9;
+    text-align: center;
+    padding: 15px;
+    font-weight: 500;
+}
+</style>
+
+{% endblock %}

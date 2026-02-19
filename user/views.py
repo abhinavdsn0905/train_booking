@@ -32,17 +32,22 @@ def register(request):
 
 
 def login(request):
+
     if request.method == "POST":
 
-        # OTP verification step
+        # ===== OTP VERIFICATION STEP =====
         if request.POST.get("otp"):
+
             entered_otp = request.POST.get("otp")
             username = request.session.get("temp_user")
 
             if not username:
                 return redirect("login")
 
-            user = User.objects.get(username=username)
+            try:
+                user = User.objects.get(username=username)
+            except User.DoesNotExist:
+                return redirect("login")
 
             if user.otp == entered_otp:
                 request.session["username"] = user.username
@@ -52,19 +57,23 @@ def login(request):
                 user.save()
 
                 return redirect("landing")
+
             else:
                 return render(request, "login.html", {
                     "otp_required": True,
                     "error": "Invalid OTP"
                 })
 
+        # ===== FIRST LOGIN STEP =====
         username = request.POST.get("username")
         password = request.POST.get("password")
 
         try:
             user = User.objects.get(username=username, password=password)
 
+            import random
             otp = str(random.randint(100000, 999999))
+
             user.otp = otp
             user.save()
 
@@ -87,7 +96,11 @@ def login(request):
                 "error": "Invalid credentials"
             })
 
-    return render(request, "login.html")
+    # Default GET request
+    return render(request, "login.html", {
+        "otp_required": False
+    })
+
 
 
 
