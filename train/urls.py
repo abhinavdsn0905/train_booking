@@ -38,4 +38,6 @@ urlpatterns = [
     # booking
     path('book/<int:train_id>/', booking_views.book_train, name='book_train'),
     path('my-bookings/', booking_views.my_bookings, name='my_bookings'),
+    path("ticket/<int:booking_id>/", booking_views.view_ticket, name="view_ticket"),
+
 ]

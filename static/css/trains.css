@@ -1,86 +1,122 @@
-/* Page Titles */
+/* Background */
+body {
+    background: linear-gradient(135deg, #e0f2fe, #dbeafe);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Page Wrapper */
+.page-container {
+    padding: 40px;
+}
+
+/* Titles */
 .page-title {
-    margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #1e293b;
 }
 
 .sub-title {
-    margin: 30px 0 20px 0;
+    margin: 40px 0 20px;
+    color: #1e293b;
 }
 
-/* Search Section */
-.search-section {
-    margin-bottom: 30px;
+/* Search Card */
+.search-card {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-.search-section input {
+/* Search Form */
+.search-form {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.search-form input,
+.search-form select {
     padding: 10px;
-    width: 180px;
-    border-radius: 6px;
-    border: none;
-    margin-right: 10px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    min-width: 150px;
 }
 
-.search-section button {
-    padding: 10px 18px;
-    border-radius: 6px;
+/* Buttons */
+.main-btn {
+    background: linear-gradient(90deg, #3b82f6, #2563eb);
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: white;
     border: none;
-    background: #38bdf8;
-    color: #0f172a;
-    font-weight: bold;
+    font-weight: 600;
     cursor: pointer;
     transition: 0.3s;
 }
 
-.search-section button:hover {
-    background: #0ea5e9;
+.main-btn:hover {
+    transform: translateY(-2px);
 }
 
-/* Table Styling */
+/* Table Wrapper */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+/* Table */
 .train-table {
     width: 100%;
     border-collapse: collapse;
-    background: #1e293b;
-    border-radius: 8px;
+    background: white;
+    border-radius: 16px;
     overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
 }
 
-.train-table th {
-    background: #0f172a;
-    padding: 12px;
+/* Table Header */
+.train-table thead {
+    background: linear-gradient(90deg, #2563eb, #1e40af);
+    color: white;
 }
 
+.train-table th,
 .train-table td {
     padding: 12px;
-    border-top: 1px solid #334155;
+    text-align: center;
 }
 
-.train-table tr:hover {
-    background: #334155;
+/* Row Styling */
+.train-table tbody tr {
+    border-bottom: 1px solid #e2e8f0;
+    transition: 0.2s;
+}
+
+.train-table tbody tr:hover {
+    background: #f1f5f9;
 }
 
 /* Book Button */
 .book-btn {
+    background: #2563eb;
     padding: 6px 14px;
-    background: #38bdf8;
-    color: #0f172a;
     border-radius: 6px;
+    color: white;
     text-decoration: none;
-    font-weight: bold;
+    font-size: 14px;
     transition: 0.3s;
 }
 
 .book-btn:hover {
-    background: #0ea5e9;
+    background: #1e40af;
 }
 
-/* Disabled Button */
-.disabled-btn {
-    color: #94a3b8;
-    font-weight: bold;
-}
-
-/* Full Text */
-.full-text {
-    color: #ff6b6b;
-    font-weight: bold;
+/* Sold Out */
+.sold-out {
+    color: red;
+    font-weight: 600;
 }

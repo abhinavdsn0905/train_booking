@@ -1,55 +1,92 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/landing.css' %}">
+{% endblock %}
 
 {% block content %}
 
-<h1 class="hero-title">Book Train Tickets Easily 🚆</h1>
-<p class="hero-subtitle">
-    Fast, Secure & Simple Online Train Reservation System
-</p>
+<section class="split-hero">
 
-<div class="hero-buttons">
-    <a href="{% url 'train_list' %}" class="primary-btn">
-        Search Trains
-    </a>
-
-    <a href="{% url 'my_bookings' %}" class="secondary-btn">
-        View Bookings
-    </a>
-</div>
-<!-- IMAGE SLIDER -->
-<div class="slider">
-    <div class="slide-track">
-
-        <div class="slide">
-            <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3" alt="">
+    <!-- LEFT SIDE -->
+    <div class="hero-left">
+        <img src="{% static 'images/hero.png' %}" alt="Train">
+        <div class="overlay"></div>
+        <div class="hero-text">
+            <h1>RailConnect</h1>
+            <p>Smart & Secure Train Booking</p>
         </div>
+    </div>
 
-        <div class="slide">
-            <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e" alt="">
-        </div>
+    <!-- RIGHT SIDE -->
+    <div class="hero-right">
+        <div class="panel-content">
 
-        <div class="slide">
-            <img src="https://images.unsplash.com/photo-1516906736502-5a6d3b3d7f3d" alt="">
-        </div>
+            <h2>Book Your Journey.</h2>
 
-        <div class="slide">
-            <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429" alt="">
-        </div>
+            <div class="hero-buttons">
 
-        <!-- duplicate for smooth loop -->
-        <div class="slide">
-            <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3" alt="">
-        </div>
+                <!-- Always show Book Ticket -->
+                <a href="{% url 'train_list' %}" class="main-btn">
+                    Book Ticket
+                </a>
 
-        <div class="slide">
-            <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e" alt="">
+                <!-- Conditional -->
+                {% if request.session.username %}
+                    <a href="{% url 'my_bookings' %}" class="secondary-btn">
+                        My Bookings
+                    </a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="secondary-btn">
+                        Login
+                    </a>
+                {% endif %}
+
+            </div>
+
         </div>
+    </div>
+
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+    <div class="feature-card">
+        <h3>⚡ Fast Booking</h3>
+        <p>Reserve tickets quickly with a smooth interface.</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>🔐 Secure Login</h3>
+        <p>OTP-based authentication for safety.</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>📩 Email Confirmation</h3>
+        <p>Instant ticket sent to your inbox.</p>
+    </div>
+</section>
+
+<section class="slider">
+    <div class="slider-track">
+
+        <img src="{% static 'images/train1.jpg' %}" alt="">
+        <img src="{% static 'images/train2.jpg' %}" alt="">
+        <img src="{% static 'images/train3.jpg' %}" alt="">
+        <img src="{% static 'images/train4.jpg' %}" alt="">
+
+        <!-- Duplicate for infinite scroll -->
+        <img src="{% static 'images/train1.jpg' %}" alt="">
+        <img src="{% static 'images/train2.jpg' %}" alt="">
+        <img src="{% static 'images/train3.jpg' %}" alt="">
+        <img src="{% static 'images/train4.jpg' %}" alt="">
 
     </div>
-</div>
-
-
-    </div>
-</div>
+</section>
 
 {% endblock %}
+
+<!-- ===== IMAGE SLIDER ===== -->
+
+

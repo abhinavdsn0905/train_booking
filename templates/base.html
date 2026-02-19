@@ -1,27 +1,44 @@
-{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>RailConnect</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Common Styles -->
+    {% load static %}
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-
-    <!-- Page Specific CSS -->
     {% block extra_css %}{% endblock %}
 </head>
 
 <body>
 
-    {% include 'includes/navbar.html' %}
+<nav class="navbar">
 
-    <div class="container">
-        {% block content %}
-        {% endblock %}
+    <div class="nav-left">
+        <a href="{% url 'landing' %}" class="logo">
+            Rail<span>Connect</span> 
+        </a>
+
+        <a href="{% url 'landing' %}" class="nav-link">Home</a>
     </div>
+
+    <div class="nav-right">
+
+        {% if request.session.username %}
+            <div class="user-badge">
+                 {{ request.session.username }}
+            </div>
+
+            <a href="{% url 'logout' %}" class="logout-btn">
+                Logout
+            </a>
+        {% endif %}
+
+    </div>
+
+</nav>
+
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
 
     <footer>
         © 2026 RailConnect | Smart Train Reservation System
